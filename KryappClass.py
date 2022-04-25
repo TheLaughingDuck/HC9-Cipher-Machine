@@ -57,6 +57,35 @@ class Machine:
                     new[letter2] = letter1
             
             self.Alfabetsblad.append(new)
+    
+
+    def Encrypt(self, plaintext):
+        
+        plaintext = convert(plaintext)
+        ciphertext = []
+        
+        "Encrypt every letter in plaintext"
+        for letter in plaintext:
+            "Spin Rotors"
+            self.Rotor = [(self.Rotor[i]+1) % Rotor_len[i] for i in range(len(self.Rotor))]
+            
+            "Punchcard digits"
+            binary = [self.Punchcard[i][self.Rotor[i]] for i in range(5)] #List
+            #print(binary)
+            
+            "XOR and conversion - Takes a word list and turns it into a 5 digit binary number"
+            xornumber = 0
+            for i in range(4):
+                #print("comparing", i, "and", i+1)
+                if(binary[i] ^ binary[i+1]): #XOR
+                    #print("Apparently binary[", i, "] ^ ", "binary[", i+1, "] = 1", sep="")
+                    xornumber += 2**(3-i)
+            
+            xornumber = (16 - xornumber) % 16
+            
+            ciphertext.append(self.Alfabetsblad[xornumber][letter])
+            
+        return(convert(ciphertext))
 
 
 "General Use Functions"
