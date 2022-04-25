@@ -8,11 +8,12 @@ The HC-9 is a portable cipher machine developed by AB Transvertex in the 1950's.
 2) Create an instance of the Machine.
     Choose a name(example: "Mach1") and create the instance with the following command:
     
-    Mach1 = Machine()
+        Mach1 = Machine()
 
 3) Configure the keys by doing one of the following:
 
-    a) accept the preset keys (do nothing)
+    a) accept the preset keys (do nothing).
+    
     b) Randomly generate new keys with the command:
 
         Mach1.random_key()
@@ -25,8 +26,8 @@ The HC-9 is a portable cipher machine developed by AB Transvertex in the 1950's.
 
 4) Encrypt a new message (example "HOWDOYOUDO") with the following command:
     
-    Mach1.Encrypt("HOWDOYOUDO")
+        Mach1.Encrypt("HOWDOYOUDO")
 
     When encrypting a new message, please note that the machine remembers the new rotor positions. Set a new inner key (example: "CALIB") for every new message using the command:
 
-    Mach1.Rotor = convert("CALIB")
+        Mach1.Rotor = convert("CALIB")
